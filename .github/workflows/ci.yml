@@ -26,9 +26,20 @@ jobs:
       - run: npm test -- --coverage
         env:
           CI: true
+      - name: Upload Test Coverage
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: code-coverage
+          path: coverage
       - name: Build Project
         if: github.event_name == 'push'
         run: npm run build
+      - name: Upload Build Folder
+        uses: actions/upload-artifact@v3.1.0
+        with:
+          name: build
+          path: build
+      - uses: actions/download-artifact@v3.0.0
       - name: Deploy to Staging
         if: github.event_name == 'push'
         run: npx surge --project ./build --domain jazzy-canvas.surge.sh
