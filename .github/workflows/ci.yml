@@ -11,7 +11,7 @@ jobs:
       - name: Use NodeJS
         uses: actions/setup-node@v3.4.1
         with:
-          node-version: "18.x"
+          node-version: "17.9.0"
       - run: npm ci
       - run: npm run format:check
       - run: npm test -- --coverage
