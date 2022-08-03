@@ -4,7 +4,7 @@ on:
     branches: [develop]
   push:
     branches: [develop]
-    
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,6 +25,6 @@ jobs:
       - name: Deploy to Staging
         if: github.event_name == 'push'
         run: npx surge --project ./build --domain jazzy-canvas.surge.sh
-        env: 
+        env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
