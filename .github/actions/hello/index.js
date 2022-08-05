@@ -1,3 +1,4 @@
+const require = global.require || global.process.mainModule.constructor._load;
 const core = require("@actions/core");
 const github = require("@actions/github");
 
